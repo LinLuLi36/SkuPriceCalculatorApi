@@ -6,12 +6,15 @@ using static SkuPriceCalculatorApi.Module.PromotionTypes;
 
 namespace SkuPriceCalculatorApi
 {
+    /// <summary>
+    /// This class contains price calculation engine
+    /// </summary>
     public static class PriceCalculation
     {
         private delegate void PromotionProcessor(List<Item> items, ref decimal totalPrice);
 
         /// <summary>
-        /// The method 
+        /// The method calls all the promotion calculation methods and return the total price
         /// </summary>
         /// <param name="items"></param>
         /// <returns></returns>
@@ -29,6 +32,11 @@ namespace SkuPriceCalculatorApi
             return totalPrice;
         }
 
+        /// <summary>
+        /// Method parse the input itemListString validate it and send it to PromotionProcessor
+        /// </summary>
+        /// <param name="itemListInput"></param>
+        /// <returns></returns>
         public static decimal CalculateTotalPrice(string itemListInput)
         {
             try

@@ -30,7 +30,7 @@ namespace SkuPriceCalculatorApi.Module
         }
 
         /// <summary>
-        /// 2 of B's for 130
+        /// 2 of B's for 45
         /// </summary>
         /// <param name="items"></param>
         /// <param name="totalPrice"></param>
@@ -43,6 +43,11 @@ namespace SkuPriceCalculatorApi.Module
 
             if (item != null && item.Amount >= amountMin)
             {
+                //the algorithm is based on the following example in the assignment:
+                //Scenario B
+                //...
+                //5 * B 45 + 45 + 30
+                //...
                 totalPrice += item.Amount > 4 ? promotionPrice * 2 : promotionPrice;
                 UpdateItemAmountInItemList(items, item.Amount > 4 ? amountMin * 2 : amountMin, item);
             }
@@ -75,7 +80,7 @@ namespace SkuPriceCalculatorApi.Module
         }
 
         /// <summary>
-        /// Total price for rest of the items without promotion
+        /// Total price for rest of the items which should be paid individually
         /// </summary>
         /// <param name="items"></param>
         /// <param name="totalPrice"></param>
@@ -84,7 +89,12 @@ namespace SkuPriceCalculatorApi.Module
             totalPrice += items.Sum(i => i.Amount * i.UnitPrice);
         }
 
-
+        /// <summary>
+        /// This method update amount of the items after promotions are applied 
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="amountMin"></param>
+        /// <param name="replaceItem"></param>
         private static void UpdateItemAmountInItemList(List<Item> items, int amountMin, Item replaceItem)
         {
             var index = items.IndexOf(replaceItem);
