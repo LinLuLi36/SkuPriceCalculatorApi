@@ -29,7 +29,7 @@ namespace PromotionEngine.Test
             PromotionType1(_items, ref _priceWithPromotion);
 
             var skuIdA = _items.FirstOrDefault(i => i.SkuId == SkuId.A);
-            Assert.Equal(skuIdA?.Amount, 5 - 3);
+            Assert.Equal(skuIdA?.Number, 5 - 3);
             Assert.Equal(130, _priceWithPromotion);
         }
 
@@ -45,7 +45,7 @@ namespace PromotionEngine.Test
             PromotionType2(_items, ref _priceWithPromotion);
 
             var skuIdB = _items.FirstOrDefault(i => i.SkuId == SkuId.B);
-            Assert.Equal(skuIdB?.Amount, 5 - 4);
+            Assert.Equal(skuIdB?.Number, 5 - 4);
             Assert.Equal(220, _priceWithPromotion);
         }
 
@@ -62,10 +62,10 @@ namespace PromotionEngine.Test
             PromotionType3(_items, ref _priceWithPromotion);
 
             var skuIdC = _items.FirstOrDefault(i => i.SkuId == SkuId.C);
-            Assert.Equal(skuIdC?.Amount, 1 - 1);
+            Assert.Equal(skuIdC?.Number, 1 - 1);
 
             var skuIdD = _items.FirstOrDefault(i => i.SkuId == SkuId.D);
-            Assert.Equal(skuIdD?.Amount, 2 - 1);
+            Assert.Equal(skuIdD?.Number, 2 - 1);
 
             Assert.Equal(250, _priceWithPromotion);
         }
@@ -73,7 +73,7 @@ namespace PromotionEngine.Test
 
         /// <summary>
         /// This unit test tests the price calculation for rest of the items that should be paid individually.
-        /// The rest of the items costs 2*50+30+15=145. The total price for all items after promotions are applied is 250+145=395.
+        /// The rest of the items cost 2*50+30+15=145. The total price for all items after promotions are applied is 250+145=395.
         /// </summary>
         [Fact]
         public void PriceForRestOfItemsTest()

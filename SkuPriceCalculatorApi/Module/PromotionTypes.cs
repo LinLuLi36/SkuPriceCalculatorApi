@@ -19,13 +19,13 @@ namespace SkuPriceCalculatorApi.Module
         {
             var skuId = SkuId.A;
             var item = items.FirstOrDefault(i => i.SkuId == skuId);
-            var amountMin = 3;
+            var numberMin = 3;
             var promotionPrice = 130;
 
-            if (item != null && item.Amount >= amountMin)
+            if (item != null && item.Number >= numberMin)
             {
                 totalPrice += promotionPrice;
-                UpdateItemAmountInItemList(items, amountMin, item);
+                UpdateItemNumberInItemList(items, numberMin, item);
             }
         }
 
@@ -38,18 +38,18 @@ namespace SkuPriceCalculatorApi.Module
         {
             var skuId = SkuId.B;
             var item = items.FirstOrDefault(i => i.SkuId == skuId);
-            var amountMin = 2;
+            var numberMin = 2;
             var promotionPrice = 45;
 
-            if (item != null && item.Amount >= amountMin)
+            if (item != null && item.Number >= numberMin)
             {
                 //the algorithm is based on the following example in the assignment:
                 //Scenario B
                 //...
                 //5 * B 45 + 45 + 30
                 //...
-                totalPrice += item.Amount > 4 ? promotionPrice * 2 : promotionPrice;
-                UpdateItemAmountInItemList(items, item.Amount > 4 ? amountMin * 2 : amountMin, item);
+                totalPrice += item.Number > 4 ? promotionPrice * 2 : promotionPrice;
+                UpdateItemNumberInItemList(items, item.Number > 4 ? numberMin * 2 : numberMin, item);
             }
         }
 
@@ -63,18 +63,18 @@ namespace SkuPriceCalculatorApi.Module
         {
             var skuId1 = SkuId.C;
             var skuId2 = SkuId.D;
-            var amountMin = 1;
+            var numberMin = 1;
             var promotionPrice = 30;
 
             var itemsSelected = items.Where(i => i.SkuId == skuId1 || i.SkuId == skuId2).DistinctBy(a => a.SkuId).ToList();
 
-            if (itemsSelected.Count >= 2 && !itemsSelected.Any(i => i.Amount < amountMin))
+            if (itemsSelected.Count >= 2 && !itemsSelected.Any(i => i.Number < numberMin))
             {
                 totalPrice += promotionPrice;
 
                 foreach (var item in itemsSelected)
                 {
-                    UpdateItemAmountInItemList(items, amountMin, item);
+                    UpdateItemNumberInItemList(items, numberMin, item);
                 }
             }
         }
@@ -86,21 +86,21 @@ namespace SkuPriceCalculatorApi.Module
         /// <param name="totalPrice"></param>
         public static void PriceForRestOfItems(List<Item> items, ref decimal totalPrice)
         {
-            totalPrice += items.Sum(i => i.Amount * i.UnitPrice);
+            totalPrice += items.Sum(i => i.Number * i.UnitPrice);
         }
 
         /// <summary>
-        /// This method update amount of the items after promotions are applied 
+        /// This method update number of the items after promotions are applied 
         /// </summary>
         /// <param name="items"></param>
-        /// <param name="amountMin"></param>
+        /// <param name="numberMin"></param>
         /// <param name="replaceItem"></param>
-        private static void UpdateItemAmountInItemList(List<Item> items, int amountMin, Item replaceItem)
+        private static void UpdateItemNumberInItemList(List<Item> items, int numberMin, Item replaceItem)
         {
             var index = items.IndexOf(replaceItem);
 
             if (index != -1)
-                items[index] = new Item(replaceItem.SkuId, replaceItem.Amount - amountMin);
+                items[index] = new Item(replaceItem.SkuId, replaceItem.Number - numberMin);
         }
     }
 }

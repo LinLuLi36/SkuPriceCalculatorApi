@@ -8,7 +8,7 @@ namespace SkuPriceCalculatorApi.Controllers
     {
         /// <summary>
         /// The itemString can e.g. be A,5;B,5;C,1;D,1
-        /// A is SKUId and 5 is amount of this SKU unit 
+        /// A is SKUId and 5 is number of this SKU unit 
         /// </summary>
         /// <param name="itemsString"></param>
         /// <returns></returns>

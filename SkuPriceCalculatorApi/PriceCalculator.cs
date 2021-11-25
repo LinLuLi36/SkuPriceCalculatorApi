@@ -58,12 +58,12 @@ namespace SkuPriceCalculatorApi
                             throw new Exception($"SKUId: {itemString[0]} is not registered in our system");
                         }
 
-                        if (!int.TryParse(itemString[1], out var itemAmount))
+                        if (!int.TryParse(itemString[1], out var itemNumber))
                         {
-                            throw new Exception($"The amount of the item {itemString[0]}, {itemString[1]} must be a decimal value.");
+                            throw new Exception($"Number of the item {itemString[0]}, {itemString[1]} must be a decimal value.");
                         }
 
-                        return new Item(itemSkuId, itemAmount);
+                        return new Item(itemSkuId, itemNumber);
                     })
                     .ToList();
 
