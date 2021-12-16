@@ -70,6 +70,7 @@ jobs:
       SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
 
     steps:
+    - uses: actions/checkout@v2
     - name: Check for required secrets
       uses: actions/github-script@v4
       with:
