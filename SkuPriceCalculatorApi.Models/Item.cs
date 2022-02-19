@@ -1,4 +1,4 @@
-﻿namespace SkuPriceCalculatorApi.Model
+﻿namespace SkuPriceCalculatorApi.Models
 {
     public class Item
     {

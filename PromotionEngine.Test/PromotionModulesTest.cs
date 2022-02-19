@@ -1,19 +1,25 @@
 using System.Collections.Generic;
 using System.Linq;
-using SkuPriceCalculatorApi.Model;
+using SkuPriceCalculatorApi.Models;
+using SkuPriceCalculatorApi.Modules;
 using Xunit;
-using static SkuPriceCalculatorApi.Module.PromotionTypes;
 
 namespace PromotionEngine.Test
 {
-    public class PromotionTypesTest
+    public class PromotionModulesTest
     {
         private readonly List<Item> _items;
         private decimal _priceWithPromotion;
+        private readonly PromotionType1 _promotionType1;
+        private readonly PromotionType2 _promotionType2;
+        private readonly PromotionType3 _promotionType3;
 
-        public PromotionTypesTest()
+        public PromotionModulesTest()
         {
             _priceWithPromotion = 0;
+            _promotionType1 = new PromotionType1();
+            _promotionType2 = new PromotionType2();
+            _promotionType3 = new PromotionType3();
             _items = new List<Item>()
                 {new (SkuId.A, 5), new (SkuId.B, 5), new (SkuId.C, 1), new (SkuId.D, 2)};
         }
@@ -26,7 +32,7 @@ namespace PromotionEngine.Test
         [Fact]
         public void PromotionType1Test()
         {
-            PromotionType1(_items, ref _priceWithPromotion);
+            _promotionType1.UpdateTotalPrice(_items, ref _priceWithPromotion);
 
             var skuIdA = _items.FirstOrDefault(i => i.SkuId == SkuId.A);
             Assert.Equal(skuIdA?.Number, 5 - 3);
@@ -41,8 +47,8 @@ namespace PromotionEngine.Test
         [Fact]
         public void PromotionType2Test()
         {
-            PromotionType1(_items, ref _priceWithPromotion);
-            PromotionType2(_items, ref _priceWithPromotion);
+            _promotionType1.UpdateTotalPrice(_items, ref _priceWithPromotion);
+            _promotionType2.UpdateTotalPrice(_items, ref _priceWithPromotion);
 
             var skuIdB = _items.FirstOrDefault(i => i.SkuId == SkuId.B);
             Assert.Equal(skuIdB?.Number, 5 - 4);
@@ -57,9 +63,9 @@ namespace PromotionEngine.Test
         [Fact]
         public void PromotionType3Test()
         {
-            PromotionType1(_items, ref _priceWithPromotion);
-            PromotionType2(_items, ref _priceWithPromotion);
-            PromotionType3(_items, ref _priceWithPromotion);
+            _promotionType1.UpdateTotalPrice(_items, ref _priceWithPromotion);
+            _promotionType2.UpdateTotalPrice(_items, ref _priceWithPromotion);
+            _promotionType3.UpdateTotalPrice(_items, ref _priceWithPromotion);
 
             var skuIdC = _items.FirstOrDefault(i => i.SkuId == SkuId.C);
             Assert.Equal(skuIdC?.Number, 1 - 1);
@@ -68,22 +74,6 @@ namespace PromotionEngine.Test
             Assert.Equal(skuIdD?.Number, 2 - 1);
 
             Assert.Equal(250, _priceWithPromotion);
-        }
-
-
-        /// <summary>
-        /// This unit test tests the price calculation for rest of the items that should be paid individually.
-        /// The rest of the items cost 2*50+30+15=145. The total price for all items after promotions are applied is 250+145=395.
-        /// </summary>
-        [Fact]
-        public void PriceForRestOfItemsTest()
-        {
-            PromotionType1(_items, ref _priceWithPromotion);
-            PromotionType2(_items, ref _priceWithPromotion);
-            PromotionType3(_items, ref _priceWithPromotion);
-            PriceForRestOfItems(_items, ref _priceWithPromotion);
-
-            Assert.Equal(395, _priceWithPromotion);
         }
     }
 }

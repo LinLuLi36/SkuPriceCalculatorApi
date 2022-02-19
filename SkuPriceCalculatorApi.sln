@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkuPriceCalculatorApi", "SkuPriceCalculatorApi\SkuPriceCalculatorApi.csproj", "{F45A7167-4C30-4027-B401-C92034EC0A9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkuPriceCalculatorApi", "SkuPriceCalculatorApi\SkuPriceCalculatorApi.csproj", "{F45A7167-4C30-4027-B401-C92034EC0A9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotionEngine.Test", "PromotionEngine.Test\PromotionEngine.Test.csproj", "{ECCC3CA9-F8D4-48C4-8386-21FD524B3139}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromotionEngine.Test", "PromotionEngine.Test\PromotionEngine.Test.csproj", "{ECCC3CA9-F8D4-48C4-8386-21FD524B3139}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkuPriceCalculatorApi.Models", "SkuPriceCalculatorApi.Models\SkuPriceCalculatorApi.Models.csproj", "{AD96508B-C539-4CCF-B386-85824B1575F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkuPriceCalculatorApi.Interfaces", "SkuPriceCalculatorApi.Interfaces\SkuPriceCalculatorApi.Interfaces.csproj", "{18CD9896-F6FE-4AF0-86DA-9F46CB82AF96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkuPriceCalculatorApi.Modules", "SkuPriceCalculatorApi.Modules\SkuPriceCalculatorApi.Modules.csproj", "{B087DA0F-7ECE-471B-BF7F-6B85F45B3441}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{ECCC3CA9-F8D4-48C4-8386-21FD524B3139}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECCC3CA9-F8D4-48C4-8386-21FD524B3139}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECCC3CA9-F8D4-48C4-8386-21FD524B3139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD96508B-C539-4CCF-B386-85824B1575F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD96508B-C539-4CCF-B386-85824B1575F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD96508B-C539-4CCF-B386-85824B1575F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD96508B-C539-4CCF-B386-85824B1575F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18CD9896-F6FE-4AF0-86DA-9F46CB82AF96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18CD9896-F6FE-4AF0-86DA-9F46CB82AF96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18CD9896-F6FE-4AF0-86DA-9F46CB82AF96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18CD9896-F6FE-4AF0-86DA-9F46CB82AF96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B087DA0F-7ECE-471B-BF7F-6B85F45B3441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B087DA0F-7ECE-471B-BF7F-6B85F45B3441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B087DA0F-7ECE-471B-BF7F-6B85F45B3441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B087DA0F-7ECE-471B-BF7F-6B85F45B3441}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SkuPriceCalculatorApi.Models\SkuPriceCalculatorApi.Models.csproj" />
+    <ProjectReference Include="..\SkuPriceCalculatorApi.Modules\SkuPriceCalculatorApi.Modules.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,35 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using SkuPriceCalculatorApi.Model;
-using static SkuPriceCalculatorApi.Module.PromotionTypes;
+using SkuPriceCalculatorApi.Interfaces.Calculators;
+using SkuPriceCalculatorApi.Models;
+using SkuPriceCalculatorApi.Modules.Utilities;
 
-namespace SkuPriceCalculatorApi
+namespace SkuPriceCalculatorApi.Calculators
 {
     /// <summary>
     /// This class contains price calculation engine
     /// </summary>
-    public static class PriceCalculation
+    public class TotalPriceCalculator : ITotalPriceCalculator
     {
-        private delegate void PromotionProcessor(List<Item> items, ref decimal totalPrice);
+        private readonly INormalPriceCalculator _normalPriceCalculator;
+        private readonly IPromoPriceCalculator _promoPriceCalculator;
 
-        /// <summary>
-        /// The method calls all the promotion calculation methods and return the total price
-        /// </summary>
-        /// <param name="items"></param>
-        /// <returns></returns>
-        private static decimal PriceCalculator(List<Item> items)
+        public TotalPriceCalculator(INormalPriceCalculator normalPriceCalculator,
+            IPromoPriceCalculator promoPriceCalculator)
         {
-            decimal totalPrice = 0;
-
-            PromotionProcessor p = PromotionType1;
-            p += PromotionType2;
-            p += PromotionType3;
-            p += PriceForRestOfItems;
-
-            p(items, ref totalPrice);
-
-            return totalPrice;
+            _normalPriceCalculator = normalPriceCalculator;
+            _promoPriceCalculator = promoPriceCalculator;
         }
 
         /// <summary>
@@ -37,7 +26,7 @@ namespace SkuPriceCalculatorApi
         /// </summary>
         /// <param name="itemListInput"></param>
         /// <returns></returns>
-        public static decimal CalculateTotalPrice(string itemListInput)
+        public decimal Calculate(string itemListInput)
         {
             try
             {
@@ -67,13 +56,17 @@ namespace SkuPriceCalculatorApi
                     })
                     .ToList();
 
-                return PriceCalculator(items);
+                var promotions = PromotionLoader.LoadPromotions().ToList();
+
+                var totalPrice = _promoPriceCalculator.Calculate(items, promotions) +
+                                 _normalPriceCalculator.Calculate(items);
+
+                return totalPrice;
             }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
-
         }
     }
 }
