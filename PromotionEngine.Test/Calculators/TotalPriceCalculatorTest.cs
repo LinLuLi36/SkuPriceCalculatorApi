@@ -16,8 +16,8 @@ namespace PromotionEngine.Test.Calculators
         }
 
         /// <summary>
-        /// This unit test tests the promotion type 1*C + 1*D for 30
-        /// After this promotion is applied, promotion price 30 is added to the total price which is now 250.
+        /// This unit test tests all the promotion types
+        /// After promotions are applied, the price is now 250.
         /// Number of SKU C and D units which should be paid individually are 1-1=0 and 2-1=1.
         /// The rest of the items cost 2*50+30+15=145. The total price for all items after promotions are applied is 250+145=395.
         /// </summary>

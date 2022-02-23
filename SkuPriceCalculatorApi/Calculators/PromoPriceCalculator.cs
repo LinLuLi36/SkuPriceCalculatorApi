@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using SkuPriceCalculatorApi.Interfaces.Calculators;
 using SkuPriceCalculatorApi.Models;
+using SkuPriceCalculatorApi.Modules;
 
 namespace SkuPriceCalculatorApi.Calculators
 {

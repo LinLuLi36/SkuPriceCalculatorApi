@@ -6,6 +6,9 @@ namespace PromotionEngine.Test
 {
     public class DependencySetupFixture
     {
+        /// <summary>
+        /// This class is made for dependency registration
+        /// </summary>
         public DependencySetupFixture()
         {
             var serviceCollection = new ServiceCollection();

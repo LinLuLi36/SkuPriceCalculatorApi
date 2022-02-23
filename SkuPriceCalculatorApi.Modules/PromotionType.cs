@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using SkuPriceCalculatorApi.Models;
 
-namespace SkuPriceCalculatorApi.Models
+namespace SkuPriceCalculatorApi.Modules
 {
     public abstract class PromotionType
     {
