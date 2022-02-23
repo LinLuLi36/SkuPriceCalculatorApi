@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkuPriceCalculatorApi", "Sk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromotionEngine.Test", "PromotionEngine.Test\PromotionEngine.Test.csproj", "{ECCC3CA9-F8D4-48C4-8386-21FD524B3139}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkuPriceCalculatorApi.Models", "SkuPriceCalculatorApi.Models\SkuPriceCalculatorApi.Models.csproj", "{AD96508B-C539-4CCF-B386-85824B1575F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkuPriceCalculatorApi.Models", "SkuPriceCalculatorApi.Models\SkuPriceCalculatorApi.Models.csproj", "{AD96508B-C539-4CCF-B386-85824B1575F7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkuPriceCalculatorApi.Interfaces", "SkuPriceCalculatorApi.Interfaces\SkuPriceCalculatorApi.Interfaces.csproj", "{18CD9896-F6FE-4AF0-86DA-9F46CB82AF96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkuPriceCalculatorApi.Modules", "SkuPriceCalculatorApi.Modules\SkuPriceCalculatorApi.Modules.csproj", "{B087DA0F-7ECE-471B-BF7F-6B85F45B3441}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkuPriceCalculatorApi.Modules", "SkuPriceCalculatorApi.Modules\SkuPriceCalculatorApi.Modules.csproj", "{B087DA0F-7ECE-471B-BF7F-6B85F45B3441}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
